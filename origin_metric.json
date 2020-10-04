@@ -1,0 +1,1168 @@
+[
+    {
+        "agentType": "prometheus",
+        "key": "wls_persistentstore_allocated_window_buffer_bytes",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "WLS_DIAGNOSTICS",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "WLS_DIAGNOSTICS",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "unit": "bytes",
+        "data_type": "double",
+        "metric_type": "gauge",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_jvm_heap_size_max",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AdminServer",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "AdminServer",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_workmanager_stuck_thread_count",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AppContainer:2c03df49-c001-4b5d-baa3-18ca3f31d423",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "AppContainer:2c03df49-c001-4b5d-baa3-18ca3f31d423",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_persistentstore_physical_write_count",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "WLS_DIAGNOSTICS",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "WLS_DIAGNOSTICS",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_workmanager_pending_requests",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AppContainer:2c03df49-c001-4b5d-baa3-18ca3f31d423",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "AppContainer:2c03df49-c001-4b5d-baa3-18ca3f31d423",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "webapp_config_deployment_state",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AdminServer",
+                "name": "server",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "bea_wls_internal",
+                "name": "app",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AdminServer_/bea_wls_internal",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "AdminServer",
+                "name": "server",
+                "readOnly": false
+            },
+            {
+                "default": "bea_wls_internal",
+                "name": "app",
+                "readOnly": false
+            },
+            {
+                "default": "AdminServer_/bea_wls_internal",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_socketmuxer_pending_request_current_count",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "weblogic.socket.Muxer",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "weblogic.socket.Muxer",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_workmanager_completed_requests",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AppContainer:2c03df49-c001-4b5d-baa3-18ca3f31d423",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "AppContainer:2c03df49-c001-4b5d-baa3-18ca3f31d423",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_persistentstore_allocated_io_buffer_bytes",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "WLS_DIAGNOSTICS",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "WLS_DIAGNOSTICS",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "unit": "bytes",
+        "data_type": "double",
+        "metric_type": "gauge",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_scrape_duration_seconds",
+        "paramDefine": [
+            {
+                "default": "192.168.1.23:8001",
+                "name": "instance",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "192.168.1.23:8001",
+                "name": "instance",
+                "readOnly": false
+            }
+        ],
+        "unit": "seconds",
+        "data_type": "double",
+        "metric_type": "gauge",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_jvm_heap_size_current",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AdminServer",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "AdminServer",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_threadpool_hogging_thread_count",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "ThreadPoolRuntime",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "ThreadPoolRuntime",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "weblogic_servlet_invocation_total_count",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AdminServer",
+                "name": "server",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "bea_wls_internal",
+                "name": "app",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AdminServer_/bea_wls_internal",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "ClientClose",
+                "name": "servletName",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "AdminServer",
+                "name": "server",
+                "readOnly": false
+            },
+            {
+                "default": "bea_wls_internal",
+                "name": "app",
+                "readOnly": false
+            },
+            {
+                "default": "AdminServer_/bea_wls_internal",
+                "name": "name",
+                "readOnly": false
+            },
+            {
+                "default": "ClientClose",
+                "name": "servletName",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "webapp_config_open_sessions_high_count",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AdminServer",
+                "name": "server",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "bea_wls_internal",
+                "name": "app",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AdminServer_/bea_wls_internal",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "AdminServer",
+                "name": "server",
+                "readOnly": false
+            },
+            {
+                "default": "bea_wls_internal",
+                "name": "app",
+                "readOnly": false
+            },
+            {
+                "default": "AdminServer_/bea_wls_internal",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_jvm_heap_free_current",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AdminServer",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "AdminServer",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_jvm_heap_free_percent",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AdminServer",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "AdminServer",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_jvm_uptime",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AdminServer",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "AdminServer",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_persistentstore_update_count",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "WLS_DIAGNOSTICS",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "WLS_DIAGNOSTICS",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_persistentstore_create_count",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "WLS_DIAGNOSTICS",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "WLS_DIAGNOSTICS",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_jmsruntime_jmsservers_total_count",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AdminServer.jms",
+                "name": "jmsruntime",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "AdminServer.jms",
+                "name": "jmsruntime",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_persistentstore_delete_count",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "WLS_DIAGNOSTICS",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "WLS_DIAGNOSTICS",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_persistentstore_object_count",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "WLS_DIAGNOSTICS",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "WLS_DIAGNOSTICS",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_jmsruntime_connections_total_count",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AdminServer.jms",
+                "name": "jmsruntime",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "AdminServer.jms",
+                "name": "jmsruntime",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_scrape_cpu_seconds",
+        "paramDefine": [
+            {
+                "default": "192.168.1.23:8001",
+                "name": "instance",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "192.168.1.23:8001",
+                "name": "instance",
+                "readOnly": false
+            }
+        ],
+        "unit": "seconds",
+        "data_type": "double",
+        "metric_type": "gauge",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_jmsruntime_connections_current_count",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AdminServer.jms",
+                "name": "jmsruntime",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "AdminServer.jms",
+                "name": "jmsruntime",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_threadpool_queue_length",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "ThreadPoolRuntime",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "ThreadPoolRuntime",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_scrape_mbeans_count_total",
+        "paramDefine": [
+            {
+                "default": "192.168.1.23:8001",
+                "name": "instance",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "192.168.1.23:8001",
+                "name": "instance",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_threadpool_stuck_thread_count",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "ThreadPoolRuntime",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "ThreadPoolRuntime",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_jmsruntime_connections_high_count",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AdminServer.jms",
+                "name": "jmsruntime",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "AdminServer.jms",
+                "name": "jmsruntime",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_jmsruntime_jmsservers_current_count",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AdminServer.jms",
+                "name": "jmsruntime",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "AdminServer.jms",
+                "name": "jmsruntime",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_threadpool_execute_thread_total_count",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "ThreadPoolRuntime",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "ThreadPoolRuntime",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_jmsruntime_jmsservers_high_count",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "AdminServer.jms",
+                "name": "jmsruntime",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "AdminServer.jms",
+                "name": "jmsruntime",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    },
+    {
+        "agentType": "prometheus",
+        "key": "wls_persistentstore_read_count",
+        "paramDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false,
+                "valueType": "string"
+            },
+            {
+                "default": "WLS_DIAGNOSTICS",
+                "name": "name",
+                "readOnly": false,
+                "valueType": "string"
+            }
+        ],
+        "tagDefine": [
+            {
+                "default": "base_domain",
+                "name": "domain",
+                "readOnly": false
+            },
+            {
+                "default": "WLS_DIAGNOSTICS",
+                "name": "name",
+                "readOnly": false
+            }
+        ],
+        "data_type": "double",
+        "metric_type": "gauge",
+        "unit": "",
+        "help": ""
+    }
+]
