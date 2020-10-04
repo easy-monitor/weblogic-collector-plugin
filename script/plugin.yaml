@@ -1,0 +1,7 @@
+agentType: prometheus
+type: exporter
+
+name: weblogic_collector_plugin
+version: 1.0.0
+
+category: WEB框架
