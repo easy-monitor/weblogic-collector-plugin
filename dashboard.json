@@ -1,1 +1,225 @@
-[]
+[
+    {
+        "_object_id": "_DASHBOARD",
+        "namespace": "resource-monitor.WEBLOGIC_SERVICE",
+        "name": "WebLogic 实例总览",
+        "panels": [
+            {
+                "brickConf": "{\"brick\":\"chart-v2.gauge-chart\",\"properties\":{\"showCard\":false,\"height\":100,\"yField\":\"percent\",\"axis\":{\"yAxis\":{\"min\":0,\"max\":100,\"unit\":\"%\"}},\"thresholdColors\":[{\"value\":50,\"color\":\"#0086FA\"},{\"value\":90,\"color\":\"#FFBF00\"},{\"value\":100,\"color\":\"#F5222D\"}]},\"lifeCycle\":{\"useResolves\":[{\"provider\":\"providers-of-data-exchange.olap-api-select\",\"args\":[{\"model\":\"<% \\\"easyops.\\\" + PARAMS.get(\\\"objectId\\\") %>\",\"statements\":[{\"name\":\"weblogic_jdbcconnectionpool_curr_capacity_percentage\",\"alias\":\"weblogic_jdbcconnectionpool_curr_capacity_percentage\"}],\"filters\":[{\"name\":\"instanceId\",\"operator\":\"==\",\"value\":\"${QUERY.instanceId|string}\"},{\"name\":\"time\",\"operator\":\">=\",\"value\":\"${QUERY.from=\\\"now-1h\\\"|string}\"},{\"name\":\"time\",\"operator\":\"<=\",\"value\":\"${QUERY.to=\\\"now-1s\\\"|string}\"},{\"name\":\"weblogic_jdbcconnectionpool_curr_capacity_percentage\",\"operator\":\"!=\",\"value\":null}],\"order\":[{\"name\":\"time\",\"order\":\"desc\"}],\"limit\":{\"limit\":1}}],\"transform\":{\"data\":[{\"item\":\"JDBC 连接池使用率\",\"percent\":\"<% _.get(DATA.list, \\\"[0].weblogic_jdbcconnectionpool_curr_capacity_percentage\\\") %>\"}]},\"onReject\":{\"transform\":{\"error\":\"<% DATA.message || '接口请求错误' %>\"}}}]}}",
+                "height": 5,
+                "id": "chart-v2.gauge-chart",
+                "links": "[]",
+                "source": "brick",
+                "title": "JDBC 连接池使用率",
+                "width": 6,
+                "x": 6,
+                "y": 24
+            },
+            {
+                "brickConf": "{\"brick\":\"chart-v2.time-series-chart\",\"properties\":{\"showCard\":false,\"height\":230,\"xField\":\"time\",\"yFields\":[\"当前打开会话数\",\"最大打开会话数\"],\"axis\":{\"yAxis\":{\"min\":0}},\"interactions\":[{\"type\":\"custom-brush-x\",\"cfg\":{\"enablePushQuery\":true,\"fromKey\":\"from\",\"toKey\":\"to\"}}]},\"lifeCycle\":{\"useResolves\":[{\"provider\":\"providers-of-data-exchange.olap-api-query\",\"args\":[{\"model\":\"<% \\\"easyops.\\\" + PARAMS.get(\\\"objectId\\\") %>\",\"dims\":[\"time(auto)\"],\"measures\":[{\"name\":\"weblogic_application_webappcomponent_open_sessions_current_count\",\"function\":{\"expression\":\"avg\",\"args\":[\"weblogic_application_webappcomponent_open_sessions_current_count\"]}},{\"name\":\"weblogic_application_webappcomponent_open_sessions_high_count\",\"function\":{\"expression\":\"avg\",\"args\":[\"weblogic_application_webappcomponent_open_sessions_high_count\"]}}],\"filters\":[{\"name\":\"instanceId\",\"operator\":\"==\",\"value\":\"${QUERY.instanceId|string}\"},{\"name\":\"time\",\"operator\":\">=\",\"value\":\"${QUERY.from=\\\"now-1h\\\"|string}\"},{\"name\":\"time\",\"operator\":\"<=\",\"value\":\"${QUERY.to=\\\"now-1s\\\"|string}\"}],\"order\":[{\"name\":\"time\",\"order\":\"desc\"}]}],\"transform\":{\"data\":\"<% DATA.list.map(item => ({...item, \\\"当前打开会话数\\\": item[\\\"weblogic_application_webappcomponent_open_sessions_current_count\\\"], \\\"最大打开会话数\\\": item[\\\"weblogic_application_webappcomponent_open_sessions_high_count\\\"]})) %>\",\"xRange\":{\"from\":\"@{from}\",\"to\":\"@{to}\",\"step\":\"@{step}\"}},\"onReject\":{\"transform\":{\"error\":\"<% DATA.message || '接口请求错误' %>\"}}}]}}",
+                "height": 8,
+                "id": "chart-v2.time-series-chart",
+                "links": "[]",
+                "source": "brick",
+                "title": "打开会话",
+                "width": 9,
+                "x": 15,
+                "y": 0
+            },
+            {
+                "brickConf": "{\"brick\":\"chart-v2.time-series-chart\",\"properties\":{\"showCard\":false,\"height\":230,\"xField\":\"time\",\"yFields\":[\"完成请求数\",\"等待请求数\"],\"axis\":{\"yAxis\":{\"min\":0}},\"interactions\":[{\"type\":\"custom-brush-x\",\"cfg\":{\"enablePushQuery\":true,\"fromKey\":\"from\",\"toKey\":\"to\"}}]},\"lifeCycle\":{\"useResolves\":[{\"provider\":\"providers-of-data-exchange.olap-api-query\",\"args\":[{\"model\":\"<% \\\"easyops.\\\" + PARAMS.get(\\\"objectId\\\") %>\",\"dims\":[\"time(auto)\"],\"measures\":[{\"name\":\"weblogic_requestclass_completed_count\",\"function\":{\"expression\":\"avg\",\"args\":[\"weblogic_requestclass_completed_count\"]}},{\"name\":\"weblogic_requestclass__request_count\",\"function\":{\"expression\":\"avg\",\"args\":[\"weblogic_requestclass_pending_request_count\"]}}],\"filters\":[{\"name\":\"instanceId\",\"operator\":\"==\",\"value\":\"${QUERY.instanceId|string}\"},{\"name\":\"time\",\"operator\":\">=\",\"value\":\"${QUERY.from=\\\"now-1h\\\"|string}\"},{\"name\":\"time\",\"operator\":\"<=\",\"value\":\"${QUERY.to=\\\"now-1s\\\"|string}\"}],\"order\":[{\"name\":\"time\",\"order\":\"desc\"}]}],\"transform\":{\"data\":\"<% DATA.list.map(item => ({...item, \\\"完成请求数\\\": item[\\\"weblogic_requestclass_completed_count\\\"], \\\"等待请求数\\\": item[\\\"weblogic_requestclass_pending_request_count\\\"]})) %>\",\"xRange\":{\"from\":\"@{from}\",\"to\":\"@{to}\",\"step\":\"@{step}\"}},\"onReject\":{\"transform\":{\"error\":\"<% DATA.message || '接口请求错误' %>\"}}}]}}",
+                "height": 8,
+                "id": "chart-v2.time-series-chart",
+                "links": "[]",
+                "source": "brick",
+                "title": "等待请求",
+                "width": 9,
+                "x": 6,
+                "y": 0
+            },
+            {
+                "brickConf": "{\"brick\":\"presentational-bricks.markdown-display\",\"properties\":{\"showCard\":false,\"icon\":{\"lib\":\"fa\",\"icon\":\"memory\"}},\"lifeCycle\":{\"useResolves\":[{\"provider\":\"providers-of-data-exchange.olap-api-select\",\"args\":[{\"model\":\"<% \\\"easyops.\\\" + PARAMS.get(\\\"objectId\\\") %>\",\"statements\":[{\"name\":\"weblogic_jdbcconnectionpool_pool_state\",\"alias\":\"weblogic_jdbcconnectionpool_pool_state\"}],\"filters\":[{\"name\":\"instanceId\",\"operator\":\"==\",\"value\":\"${QUERY.instanceId|string}\"},{\"name\":\"time\",\"operator\":\">=\",\"value\":\"now-5m\"},{\"name\":\"time\",\"operator\":\"<=\",\"value\":\"${QUERY.to=\\\"now-1s\\\"|string}\"},{\"name\":\"weblogic_jdbcconnectionpool_pool_state\",\"operator\":\"!=\",\"value\":null}],\"order\":[{\"name\":\"time\",\"order\":\"desc\"}],\"limit\":{\"limit\":1}}],\"transform\":{\"value\":\"<% _.get(DATA.list, \\\"[0].weblogic_jdbcconnectionpool_pool_state\\\") === 1 ? \\\"<center><font size=5 color=green>正常</font></center>\\\" : \\\"<center><font size=5 color=red>异常</font></center>\\\" %>\"},\"onReject\":{\"transform\":{\"error\":\"<% DATA.message || '接口请求错误' %>\"}}}]}}",
+                "height": 4,
+                "id": "general-charts.statistic-card",
+                "links": "[]",
+                "source": "brick",
+                "title": "JDBC 连接池状态",
+                "width": 6,
+                "x": 0,
+                "y": 16
+            },
+            {
+                "brickConf": "{\"brick\":\"general-charts.statistic-card\",\"properties\":{\"showCard\":false,\"format\":{\"unit\":\"个\",\"precision\":0},\"icon\":{\"lib\":\"fa\",\"icon\":\"link\"}},\"lifeCycle\":{\"useResolves\":[{\"provider\":\"providers-of-data-exchange.olap-api-select\",\"args\":[{\"model\":\"<% \\\"easyops.\\\" + PARAMS.get(\\\"objectId\\\") %>\",\"statements\":[{\"name\":\"weblogic_jdbcconnectionpool_curr_capacity\",\"alias\":\"weblogic_jdbcconnectionpool_curr_capacity\"}],\"filters\":[{\"name\":\"instanceId\",\"operator\":\"==\",\"value\":\"${QUERY.instanceId|string}\"},{\"name\":\"time\",\"operator\":\">=\",\"value\":\"${QUERY.from=\\\"now-1h\\\"|string}\"},{\"name\":\"time\",\"operator\":\"<=\",\"value\":\"${QUERY.to=\\\"now-1s\\\"|string}\"},{\"name\":\"weblogic_jdbcconnectionpool_curr_capacity\",\"operator\":\"!=\",\"value\":null}],\"order\":[{\"name\":\"time\",\"order\":\"desc\"}],\"limit\":{\"limit\":1}}],\"transform\":{\"value\":\"<% _.get(DATA.list, \\\"[0].weblogic_jdbcconnectionpool_curr_capacity\\\") %>\"},\"onReject\":{\"transform\":{\"error\":\"<% DATA.message || '接口请求错误' %>\"}}}]}}",
+                "height": 5,
+                "id": "general-charts.statistic-card",
+                "links": "[]",
+                "source": "brick",
+                "title": "连接池当前连接数",
+                "width": 6,
+                "x": 0,
+                "y": 24
+            },
+            {
+                "brickConf": "{\"brick\":\"general-charts.statistic-item\",\"properties\":{\"showCard\":false,\"unit\":\"个\"},\"lifeCycle\":{\"useResolves\":[{\"provider\":\"providers-of-data-exchange.olap-api-select\",\"args\":[{\"model\":\"<% \\\"easyops.\\\" + PARAMS.get(\\\"objectId\\\") %>\",\"statements\":[{\"name\":\"weblogic_jdbcconnectionpool_max_capacity\",\"alias\":\"weblogic_jdbcconnectionpool_max_capacity\"}],\"filters\":[{\"name\":\"instanceId\",\"operator\":\"==\",\"value\":\"${QUERY.instanceId|string}\"},{\"name\":\"time\",\"operator\":\">=\",\"value\":\"${QUERY.from=\\\"now-1h\\\"|string}\"},{\"name\":\"time\",\"operator\":\"<=\",\"value\":\"${QUERY.to=\\\"now-1s\\\"|string}\"},{\"name\":\"weblogic_jdbcconnectionpool_max_capacity\",\"operator\":\"!=\",\"value\":null}],\"order\":[{\"name\":\"time\",\"order\":\"desc\"}],\"limit\":{\"limit\":1}}],\"transform\":{\"text\":\"<% _.get(DATA.list, \\\"[0].weblogic_jdbcconnectionpool_max_capacity\\\") %>\"},\"onReject\":{\"transform\":{\"error\":\"<% DATA.message || '接口请求错误' %>\"}}}]}}",
+                "height": 4,
+                "id": "general-charts.statistic-card",
+                "links": "[]",
+                "source": "brick",
+                "title": "JDBC 连接池最大容量",
+                "width": 6,
+                "x": 0,
+                "y": 20
+            },
+            {
+                "brickConf": "{\"brick\":\"chart-v2.time-series-chart\",\"properties\":{\"showCard\":false,\"height\":230,\"xField\":\"time\",\"yFields\":[\"JDBC 连接池使用率\"],\"axis\":{\"yAxis\":{\"min\":0,\"max\":100,\"unit\":\"percent(100)\"}},\"interactions\":[{\"type\":\"custom-brush-x\",\"cfg\":{\"enablePushQuery\":true,\"fromKey\":\"from\",\"toKey\":\"to\"}}]},\"lifeCycle\":{\"useResolves\":[{\"provider\":\"providers-of-data-exchange.olap-api-query\",\"args\":[{\"model\":\"<% \\\"easyops.\\\" + PARAMS.get(\\\"objectId\\\") %>\",\"dims\":[\"time(auto)\"],\"measures\":[{\"name\":\"weblogic_jdbcconnectionpool_curr_capacity_percentage\",\"function\":{\"expression\":\"avg\",\"args\":[\"weblogic_jdbcconnectionpool_curr_capacity_percentage\"]}}],\"filters\":[{\"name\":\"instanceId\",\"operator\":\"==\",\"value\":\"${QUERY.instanceId|string}\"},{\"name\":\"time\",\"operator\":\">=\",\"value\":\"${QUERY.from=\\\"now-1h\\\"|string}\"},{\"name\":\"time\",\"operator\":\"<=\",\"value\":\"${QUERY.to=\\\"now-1s\\\"|string}\"}],\"order\":[{\"name\":\"time\",\"order\":\"desc\"}]}],\"transform\":{\"data\":\"<% DATA.list.map(item => ({...item, \\\"JDBC 连接池使用率\\\": item[\\\"weblogic_jdbcconnectionpool_curr_capacity_percentage\\\"]})) %>\",\"xRange\":{\"from\":\"@{from}\",\"to\":\"@{to}\",\"step\":\"@{step}\"}},\"onReject\":{\"transform\":{\"error\":\"<% DATA.message || '接口请求错误' %>\"}}}]}}",
+                "height": 8,
+                "id": "chart-v2.time-series-chart",
+                "links": "[]",
+                "source": "brick",
+                "title": "JDBC 连接池使用率",
+                "width": 18,
+                "x": 6,
+                "y": 16
+            },
+            {
+                "brickConf": "{\"brick\":\"general-charts.statistic-card\",\"properties\":{\"showCard\":false,\"format\":{\"unit\":\"个\",\"precision\":0},\"icon\":{\"lib\":\"fa\",\"icon\":\"link\"}},\"lifeCycle\":{\"useResolves\":[{\"provider\":\"providers-of-data-exchange.olap-api-select\",\"args\":[{\"model\":\"<% \\\"easyops.\\\" + PARAMS.get(\\\"objectId\\\") %>\",\"statements\":[{\"name\":\"weblogic_jdbcconnectionpool_num_available\",\"alias\":\"weblogic_jdbcconnectionpool_num_available\"}],\"filters\":[{\"name\":\"instanceId\",\"operator\":\"==\",\"value\":\"${QUERY.instanceId|string}\"},{\"name\":\"time\",\"operator\":\">=\",\"value\":\"${QUERY.from=\\\"now-1h\\\"|string}\"},{\"name\":\"time\",\"operator\":\"<=\",\"value\":\"${QUERY.to=\\\"now-1s\\\"|string}\"},{\"name\":\"weblogic_jdbcconnectionpool_num_available\",\"operator\":\"!=\",\"value\":null}],\"order\":[{\"name\":\"time\",\"order\":\"desc\"}],\"limit\":{\"limit\":1}}],\"transform\":{\"value\":\"<% _.get(DATA.list, \\\"[0].weblogic_jdbcconnectionpool_num_available\\\") %>\"},\"onReject\":{\"transform\":{\"error\":\"<% DATA.message || '接口请求错误' %>\"}}}]}}",
+                "height": 5,
+                "id": "general-charts.statistic-card",
+                "links": "[]",
+                "source": "brick",
+                "title": "连接池当前可用连接数",
+                "width": 6,
+                "x": 12,
+                "y": 24
+            },
+            {
+                "brickConf": "{\"brick\":\"general-charts.statistic-card\",\"properties\":{\"showCard\":false,\"format\":{\"unit\":\"个\",\"precision\":0},\"icon\":{\"lib\":\"fa\",\"icon\":\"unlink\"}},\"lifeCycle\":{\"useResolves\":[{\"provider\":\"providers-of-data-exchange.olap-api-select\",\"args\":[{\"model\":\"<% \\\"easyops.\\\" + PARAMS.get(\\\"objectId\\\") %>\",\"statements\":[{\"name\":\"weblogic_jdbcconnectionpool_num_unavailable\",\"alias\":\"weblogic_jdbcconnectionpool_num_unavailable\"}],\"filters\":[{\"name\":\"instanceId\",\"operator\":\"==\",\"value\":\"${QUERY.instanceId|string}\"},{\"name\":\"time\",\"operator\":\">=\",\"value\":\"${QUERY.from=\\\"now-1h\\\"|string}\"},{\"name\":\"time\",\"operator\":\"<=\",\"value\":\"${QUERY.to=\\\"now-1s\\\"|string}\"},{\"name\":\"weblogic_jdbcconnectionpool_num_unavailable\",\"operator\":\"!=\",\"value\":null}],\"order\":[{\"name\":\"time\",\"order\":\"desc\"}],\"limit\":{\"limit\":1}}],\"transform\":{\"value\":\"<% _.get(DATA.list, \\\"[0].weblogic_jdbcconnectionpool_num_unavailable\\\") %>\"},\"onReject\":{\"transform\":{\"error\":\"<% DATA.message || '接口请求错误' %>\"}}}]}}",
+                "height": 5,
+                "id": "general-charts.statistic-card",
+                "links": "[]",
+                "source": "brick",
+                "title": "连接池当前不可用连接数",
+                "width": 6,
+                "x": 18,
+                "y": 24
+            },
+            {
+                "brickConf": "{\"brick\":\"presentational-bricks.brick-table\",\"properties\":{\"showCard\":false,\"rowKey\":\"time\",\"page\":\"${query.page=1|number}\",\"pageSize\":\"${query.pageSize=10|number}\",\"columns\":[{\"title\":\"时间\",\"dataIndex\":\"time\",\"key\":\"time\"},{\"title\":\"名称\",\"dataIndex\":\"name\",\"key\":\"name\"},{\"title\":\"运行时\",\"dataIndex\":\"runtime\",\"key\":\"runtime\"},{\"title\":\"当前 Offset\",\"dataIndex\":\"weblogic_webserver_default_web_server\",\"key\":\"weblogic_webserver_default_web_server\"}]},\"lifeCycle\":{\"useResolves\":[{\"provider\":\"providers-of-data-exchange.olap-api-query\",\"args\":[{\"model\":\"<% \\\"easyops.\\\" + PARAMS.get(\\\"objectId\\\") %>\",\"dims\":[\"name\",\"runtime\",\"time(auto)\"],\"measures\":[{\"name\":\"weblogic_webserver_default_web_server\",\"function\":{\"expression\":\"last\",\"args\":[\"weblogic_webserver_default_web_server\"]}}],\"filters\":[{\"name\":\"instanceId\",\"operator\":\"==\",\"value\":\"${QUERY.instanceId|string}\"},{\"name\":\"time\",\"operator\":\">=\",\"value\":\"${QUERY.from=\\\"now-1h\\\"|string}\"},{\"name\":\"time\",\"operator\":\"<=\",\"value\":\"${QUERY.to=\\\"now-1s\\\"|string}\"},{\"name\":\"name\",\"operator\":\"!=\",\"value\":\"null\"},{\"name\":\"runtime\",\"operator\":\"!=\",\"value\":\"null\"}],\"order\":[{\"name\":\"time\",\"order\":\"desc\"},{\"name\":\"name\",\"order\":\"asc\"},{\"name\":\"runtime\",\"order\":\"asc\"}],\"limitBy\":{\"expressions\":[\"name\",\"runtime\"],\"limit\":1}}],\"transform\":{\"dataSource\":\"<% { ...DATA, list: DATA.list.map(row => ({ ...row, time: moment(row.time * 1000).format('YYYY-MM-DD HH:mm:ss') })) } %>\"},\"onReject\":{\"transform\":{\"error\":\"<% DATA.message || '接口请求错误' %>\"}}}]}}",
+                "height": 18,
+                "id": "presentational-bricks.brick-table",
+                "links": "[]",
+                "source": "brick",
+                "width": 24,
+                "x": 0,
+                "y": 37
+            },
+            {
+                "brickConf": "{\"brick\":\"general-charts.statistic-card\",\"properties\":{\"showCard\":false,\"format\":{\"unit\":\"ms\",\"precision\":0},\"icon\":{\"lib\":\"fa\",\"icon\":\"clock\"}},\"lifeCycle\":{\"useResolves\":[{\"provider\":\"providers-of-data-exchange.olap-api-select\",\"args\":[{\"model\":\"<% \\\"easyops.\\\" + PARAMS.get(\\\"objectId\\\") %>\",\"statements\":[{\"name\":\"java_lang_runtime_uptime\",\"alias\":\"java_lang_runtime_uptime\"}],\"filters\":[{\"name\":\"instanceId\",\"operator\":\"==\",\"value\":\"${QUERY.instanceId|string}\"},{\"name\":\"time\",\"operator\":\">=\",\"value\":\"${QUERY.from=\\\"now-3m\\\"|string}\"},{\"name\":\"time\",\"operator\":\"<=\",\"value\":\"${QUERY.to=\\\"now-1s\\\"|string}\"},{\"name\":\"java_lang_runtime_uptime\",\"operator\":\"!=\",\"value\":null}],\"order\":[{\"name\":\"time\",\"order\":\"desc\"}],\"limit\":{\"limit\":1}}],\"transform\":{\"value\":\"<% _.get(DATA.list, \\\"[0].java_lang_runtime_uptime\\\") %>\"},\"onReject\":{\"transform\":{\"error\":\"<% DATA.message || '接口请求错误' %>\"}}}]}}",
+                "height": 5,
+                "id": "general-charts.statistic-card",
+                "links": "[]",
+                "source": "brick",
+                "title": "运行时间",
+                "width": 6,
+                "x": 0,
+                "y": 0
+            },
+            {
+                "brickConf": "{\"brick\":\"presentational-bricks.markdown-display\",\"properties\":{\"showCard\":false,\"icon\":{\"lib\":\"fa\",\"icon\":\"clock\"}},\"lifeCycle\":{\"useResolves\":[{\"provider\":\"providers-of-data-exchange.olap-api-select\",\"args\":[{\"model\":\"<% \\\"easyops.\\\" + PARAMS.get(\\\"objectId\\\") %>\",\"statements\":[{\"name\":\"java_lang_runtime_starttime\",\"alias\":\"java_lang_runtime_starttime\"}],\"filters\":[{\"name\":\"instanceId\",\"operator\":\"==\",\"value\":\"${QUERY.instanceId|string}\"},{\"name\":\"time\",\"operator\":\">=\",\"value\":\"${QUERY.from=\\\"now-3m\\\"|string}\"},{\"name\":\"time\",\"operator\":\"<=\",\"value\":\"${QUERY.to=\\\"now-1s\\\"|string}\"},{\"name\":\"java_lang_runtime_starttime\",\"operator\":\"!=\",\"value\":null}],\"order\":[{\"name\":\"time\",\"order\":\"desc\"}],\"limit\":{\"limit\":1}}],\"transform\":{\"value\":\"<% \\\"<font size=5>\\\" + moment(_.get(DATA.list, \\\"[0].java_lang_runtime_starttime\\\")).format(\\\"YYYY-MM-DD HH:mm:ss\\\") + \\\"</font>\\\" %>\"},\"onReject\":{\"transform\":{\"error\":\"<% DATA.message || '接口请求错误' %>\"}}}]}}",
+                "height": 3,
+                "id": "presentational-bricks.markdown-display",
+                "links": "[]",
+                "source": "brick",
+                "title": "启动时间",
+                "width": 6,
+                "x": 0,
+                "y": 5
+            },
+            {
+                "brickConf": "{\"brick\":\"chart-v2.time-series-chart\",\"properties\":{\"showCard\":false,\"height\":230,\"xField\":\"time\",\"yFields\":[\"最大使用堆内存\",\"已使用堆内存\",\"已提交堆内存\",\"初始化堆内存\"],\"axis\":{\"yAxis\":{\"min\":0,\"unit\":\"bytes\",\"precision\":2}},\"interactions\":[{\"type\":\"custom-brush-x\",\"cfg\":{\"enablePushQuery\":true,\"fromKey\":\"from\",\"toKey\":\"to\"}}]},\"lifeCycle\":{\"useResolves\":[{\"provider\":\"providers-of-data-exchange.olap-api-query\",\"args\":[{\"model\":\"<% \\\"easyops.\\\" + PARAMS.get(\\\"objectId\\\") %>\",\"dims\":[\"time(auto)\"],\"measures\":[{\"name\":\"java_lang_memory_heapmemoryusage_max\",\"function\":{\"expression\":\"avg\",\"args\":[\"java_lang_memory_heapmemoryusage_max\"]}},{\"name\":\"java_lang_memory_heapmemoryusage_used\",\"function\":{\"expression\":\"avg\",\"args\":[\"java_lang_memory_heapmemoryusage_used\"]}},{\"name\":\"java_lang_memory_heapmemoryusage_committed\",\"function\":{\"expression\":\"avg\",\"args\":[\"java_lang_memory_heapmemoryusage_committed\"]}},{\"name\":\"java_lang_memory_heapmemoryusage_init\",\"function\":{\"expression\":\"avg\",\"args\":[\"java_lang_memory_heapmemoryusage_init\"]}}],\"filters\":[{\"name\":\"instanceId\",\"operator\":\"==\",\"value\":\"${QUERY.instanceId|string}\"},{\"name\":\"time\",\"operator\":\">=\",\"value\":\"${QUERY.from=\\\"now-1h\\\"|string}\"},{\"name\":\"time\",\"operator\":\"<=\",\"value\":\"${QUERY.to=\\\"now-1s\\\"|string}\"}],\"order\":[{\"name\":\"time\",\"order\":\"desc\"}]}],\"transform\":{\"data\":\"<% DATA.list.map(item => ({...item, \\\"最大使用堆内存\\\": item[\\\"java_lang_memory_heapmemoryusage_max\\\"], \\\"已使用堆内存\\\": item[\\\"java_lang_memory_heapmemoryusage_used\\\"], \\\"已提交堆内存\\\": item[\\\"java_lang_memory_heapmemoryusage_committed\\\"], \\\"初始化堆内存\\\": item[\\\"java_lang_memory_heapmemoryusage_init\\\"]})) %>\",\"xRange\":{\"from\":\"@{from}\",\"to\":\"@{to}\",\"step\":\"@{step}\"}},\"onReject\":{\"transform\":{\"error\":\"<% DATA.message || '接口请求错误' %>\"}}}]}}",
+                "height": 8,
+                "id": "chart-v2.time-series-chart",
+                "links": "[]",
+                "source": "brick",
+                "title": "堆内存",
+                "width": 12,
+                "x": 0,
+                "y": 8
+            },
+            {
+                "brickConf": "{\"brick\":\"chart-v2.time-series-chart\",\"properties\":{\"showCard\":false,\"height\":230,\"xField\":\"time\",\"yFields\":[\"最大使用堆外内存\",\"已使用堆外内存\",\"已提交堆外内存\",\"初始化堆外内存\"],\"axis\":{\"yAxis\":{\"min\":0,\"unit\":\"bytes\",\"precision\":2}},\"interactions\":[{\"type\":\"custom-brush-x\",\"cfg\":{\"enablePushQuery\":true,\"fromKey\":\"from\",\"toKey\":\"to\"}}]},\"lifeCycle\":{\"useResolves\":[{\"provider\":\"providers-of-data-exchange.olap-api-query\",\"args\":[{\"model\":\"<% \\\"easyops.\\\" + PARAMS.get(\\\"objectId\\\") %>\",\"dims\":[\"time(auto)\"],\"measures\":[{\"name\":\"java_lang_memory_nonheapmemoryusage_max\",\"function\":{\"expression\":\"avg\",\"args\":[\"java_lang_memory_nonheapmemoryusage_max\"]}},{\"name\":\"java_lang_memory_nonheapmemoryusage_used\",\"function\":{\"expression\":\"avg\",\"args\":[\"java_lang_memory_nonheapmemoryusage_used\"]}},{\"name\":\"java_lang_memory_nonheapmemoryusage_committed\",\"function\":{\"expression\":\"avg\",\"args\":[\"java_lang_memory_nonheapmemoryusage_committed\"]}},{\"name\":\"java_lang_memory_nonheapmemoryusage_init\",\"function\":{\"expression\":\"avg\",\"args\":[\"java_lang_memory_nonheapmemoryusage_init\"]}}],\"filters\":[{\"name\":\"instanceId\",\"operator\":\"==\",\"value\":\"${QUERY.instanceId|string}\"},{\"name\":\"time\",\"operator\":\">=\",\"value\":\"${QUERY.from=\\\"now-1h\\\"|string}\"},{\"name\":\"time\",\"operator\":\"<=\",\"value\":\"${QUERY.to=\\\"now-1s\\\"|string}\"}],\"order\":[{\"name\":\"time\",\"order\":\"desc\"}]}],\"transform\":{\"data\":\"<% DATA.list.map(item => ({...item, \\\"最大使用堆外内存\\\": item[\\\"java_lang_memory_nonheapmemoryusage_max\\\"], \\\"已使用堆外内存\\\": item[\\\"java_lang_memory_nonheapmemoryusage_used\\\"], \\\"已提交堆外内存\\\": item[\\\"java_lang_memory_nonheapmemoryusage_committed\\\"], \\\"初始化堆外内存\\\": item[\\\"java_lang_memory_nonheapmemoryusage_init\\\"]})) %>\",\"xRange\":{\"from\":\"@{from}\",\"to\":\"@{to}\",\"step\":\"@{step}\"}},\"onReject\":{\"transform\":{\"error\":\"<% DATA.message || '接口请求错误' %>\"}}}]}}",
+                "height": 8,
+                "id": "chart-v2.time-series-chart",
+                "links": "[]",
+                "source": "brick",
+                "title": "堆外内存",
+                "width": 12,
+                "x": 12,
+                "y": 8
+            },
+            {
+                "brickConf": "{\"brick\":\"chart-v2.time-series-chart\",\"properties\":{\"showCard\":false,\"height\":230,\"xField\":\"time\",\"yFields\":[\"加载类数量\",\"卸载类数量\"],\"axis\":{\"yAxis\":{\"min\":0}},\"interactions\":[{\"type\":\"custom-brush-x\",\"cfg\":{\"enablePushQuery\":true,\"fromKey\":\"from\",\"toKey\":\"to\"}}]},\"lifeCycle\":{\"useResolves\":[{\"provider\":\"providers-of-data-exchange.olap-api-query\",\"args\":[{\"model\":\"<% \\\"easyops.\\\" + PARAMS.get(\\\"objectId\\\") %>\",\"dims\":[\"time(auto)\"],\"measures\":[{\"name\":\"java_lang_classloading_loadedclasscount\",\"function\":{\"expression\":\"avg\",\"args\":[\"java_lang_classloading_loadedclasscount\"]}},{\"name\":\"java_lang_classloading_unloadedclasscount\",\"function\":{\"expression\":\"avg\",\"args\":[\"java_lang_classloading_unloadedclasscount\"]}}],\"filters\":[{\"name\":\"instanceId\",\"operator\":\"==\",\"value\":\"${QUERY.instanceId|string}\"},{\"name\":\"time\",\"operator\":\">=\",\"value\":\"${QUERY.from=\\\"now-1h\\\"|string}\"},{\"name\":\"time\",\"operator\":\"<=\",\"value\":\"${QUERY.to=\\\"now-1s\\\"|string}\"}],\"order\":[{\"name\":\"time\",\"order\":\"desc\"}]}],\"transform\":{\"data\":\"<% DATA.list.map(item => ({...item, \\\"加载类数量\\\": item[\\\"java_lang_classloading_loadedclasscount\\\"], \\\"卸载类数量\\\": item[\\\"java_lang_classloading_unloadedclasscount\\\"]})) %>\",\"xRange\":{\"from\":\"@{from}\",\"to\":\"@{to}\",\"step\":\"@{step}\"}},\"onReject\":{\"transform\":{\"error\":\"<% DATA.message || '接口请求错误' %>\"}}}]}}",
+                "height": 8,
+                "id": "chart-v2.time-series-chart",
+                "links": "[]",
+                "source": "brick",
+                "title": "类数量",
+                "width": 12,
+                "x": 0,
+                "y": 55
+            },
+            {
+                "brickConf": "{\"brick\":\"chart-v2.time-series-chart\",\"properties\":{\"showCard\":false,\"height\":230,\"xField\":\"time\",\"yFields\":[\"垃圾回收次数\"],\"axis\":{\"yAxis\":{\"min\":0}},\"interactions\":[{\"type\":\"custom-brush-x\",\"cfg\":{\"enablePushQuery\":true,\"fromKey\":\"from\",\"toKey\":\"to\"}}]},\"lifeCycle\":{\"useResolves\":[{\"provider\":\"providers-of-data-exchange.olap-api-query\",\"args\":[{\"model\":\"<% \\\"easyops.\\\" + PARAMS.get(\\\"objectId\\\") %>\",\"dims\":[\"time(auto)\"],\"measures\":[{\"name\":\"java_lang_garbagecollector_collectioncount\",\"function\":{\"expression\":\"avg\",\"args\":[\"java_lang_garbagecollector_collectioncount\"]}}],\"filters\":[{\"name\":\"instanceId\",\"operator\":\"==\",\"value\":\"${QUERY.instanceId|string}\"},{\"name\":\"time\",\"operator\":\">=\",\"value\":\"${QUERY.from=\\\"now-1h\\\"|string}\"},{\"name\":\"time\",\"operator\":\"<=\",\"value\":\"${QUERY.to=\\\"now-1s\\\"|string}\"}],\"order\":[{\"name\":\"time\",\"order\":\"desc\"}]}],\"transform\":{\"data\":\"<% DATA.list.map(item => ({...item, \\\"垃圾回收次数\\\": item[\\\"java_lang_garbagecollector_collectioncount\\\"]})) %>\",\"xRange\":{\"from\":\"@{from}\",\"to\":\"@{to}\",\"step\":\"@{step}\"}},\"onReject\":{\"transform\":{\"error\":\"<% DATA.message || '接口请求错误' %>\"}}}]}}",
+                "height": 8,
+                "id": "chart-v2.time-series-chart",
+                "links": "[]",
+                "source": "brick",
+                "title": "垃圾回收",
+                "width": 12,
+                "x": 12,
+                "y": 55
+            },
+            {
+                "brickConf": "{\"brick\":\"chart-v2.time-series-chart\",\"properties\":{\"showCard\":false,\"height\":230,\"xField\":\"time\",\"yFields\":[\"垃圾回收时间\"],\"axis\":{\"yAxis\":{\"min\":0,\"unit\":\"ms\"}},\"interactions\":[{\"type\":\"custom-brush-x\",\"cfg\":{\"enablePushQuery\":true,\"fromKey\":\"from\",\"toKey\":\"to\"}}]},\"lifeCycle\":{\"useResolves\":[{\"provider\":\"providers-of-data-exchange.olap-api-query\",\"args\":[{\"model\":\"<% \\\"easyops.\\\" + PARAMS.get(\\\"objectId\\\") %>\",\"dims\":[\"time(auto)\"],\"measures\":[{\"name\":\"java_lang_garbagecollector_collectiontime\",\"function\":{\"expression\":\"avg\",\"args\":[\"java_lang_garbagecollector_collectiontime\"]}}],\"filters\":[{\"name\":\"instanceId\",\"operator\":\"==\",\"value\":\"${QUERY.instanceId|string}\"},{\"name\":\"time\",\"operator\":\">=\",\"value\":\"${QUERY.from=\\\"now-1h\\\"|string}\"},{\"name\":\"time\",\"operator\":\"<=\",\"value\":\"${QUERY.to=\\\"now-1s\\\"|string}\"}],\"order\":[{\"name\":\"time\",\"order\":\"desc\"}]}],\"transform\":{\"data\":\"<% DATA.list.map(item => ({...item, \\\"垃圾回收时间\\\": item[\\\"java_lang_garbagecollector_collectiontime\\\"]})) %>\",\"xRange\":{\"from\":\"@{from}\",\"to\":\"@{to}\",\"step\":\"@{step}\"}},\"onReject\":{\"transform\":{\"error\":\"<% DATA.message || '接口请求错误' %>\"}}}]}}",
+                "height": 8,
+                "id": "chart-v2.time-series-chart",
+                "links": "[]",
+                "source": "brick",
+                "title": "垃圾回收时间",
+                "width": 12,
+                "x": 0,
+                "y": 63
+            },
+            {
+                "brickConf": "{\"brick\":\"chart-v2.time-series-chart\",\"properties\":{\"showCard\":false,\"height\":230,\"xField\":\"time\",\"yFields\":[\"最大打开文件数\",\"打开文件数\"],\"axis\":{\"yAxis\":{\"min\":0}},\"interactions\":[{\"type\":\"custom-brush-x\",\"cfg\":{\"enablePushQuery\":true,\"fromKey\":\"from\",\"toKey\":\"to\"}}]},\"lifeCycle\":{\"useResolves\":[{\"provider\":\"providers-of-data-exchange.olap-api-query\",\"args\":[{\"model\":\"<% \\\"easyops.\\\" + PARAMS.get(\\\"objectId\\\") %>\",\"dims\":[\"time(auto)\"],\"measures\":[{\"name\":\"java_lang_operatingsystem_maxfiledescriptorcount\",\"function\":{\"expression\":\"avg\",\"args\":[\"java_lang_operatingsystem_maxfiledescriptorcount\"]}},{\"name\":\"java_lang_operatingsystem_openfiledescriptorcount\",\"function\":{\"expression\":\"avg\",\"args\":[\"java_lang_operatingsystem_openfiledescriptorcount\"]}}],\"filters\":[{\"name\":\"instanceId\",\"operator\":\"==\",\"value\":\"${QUERY.instanceId|string}\"},{\"name\":\"time\",\"operator\":\">=\",\"value\":\"${QUERY.from=\\\"now-1h\\\"|string}\"},{\"name\":\"time\",\"operator\":\"<=\",\"value\":\"${QUERY.to=\\\"now-1s\\\"|string}\"}],\"order\":[{\"name\":\"time\",\"order\":\"desc\"}]}],\"transform\":{\"data\":\"<% DATA.list.map(item => ({...item, \\\"最大打开文件数\\\": item[\\\"java_lang_operatingsystem_maxfiledescriptorcount\\\"], \\\"打开文件数\\\": item[\\\"java_lang_operatingsystem_openfiledescriptorcount\\\"]})) %>\",\"xRange\":{\"from\":\"@{from}\",\"to\":\"@{to}\",\"step\":\"@{step}\"}},\"onReject\":{\"transform\":{\"error\":\"<% DATA.message || '接口请求错误' %>\"}}}]}}",
+                "height": 8,
+                "id": "chart-v2.time-series-chart",
+                "links": "[]",
+                "source": "brick",
+                "title": "类数量",
+                "width": 12,
+                "x": 12,
+                "y": 29
+            }
+        ],
+        "variables": [
+            {
+                "id": "objectId",
+                "multiSelect": false,
+                "name": "模型 ID",
+                "selectorDefaultValue": "APP",
+                "showSelector": false,
+                "type": "cmdb-model"
+            },
+            {
+                "id": "instanceId",
+                "multiSelect": false,
+                "name": "实例 ID",
+                "selectorObjectId": "APP",
+                "selectorQuery": "{}",
+                "showSelector": false,
+                "type": "cmdb"
+            }
+        ]
+    }
+]
