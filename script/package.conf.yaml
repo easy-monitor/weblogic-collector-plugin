@@ -5,14 +5,14 @@ start_component_params: ""
 stop_component: ""
 stop_component_params: ""
 proc_list:
-- proc_name: ~
+- proc_name: jmx_prometheus
   proc_num_min: ~
   proc_num_max: ~
   pid_file: ~
 port_list: []
 proc_guard: ""
 port_guard: none
-start_script: ~
+start_script: ""
 start_script_type: python
 user_pre_check_script: ""
 user_pre_check_script_type: shell
